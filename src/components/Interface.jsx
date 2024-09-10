@@ -50,7 +50,7 @@ const AboutSection = (props) => {
   const { setSection } = props;
   return (
     <Section mobileTop>
-      <h1 className="text-4xl md:text-6xl font-extrabold leading-snug mt-8 md:mt-0">
+      <h1 className="text-4xl md:text-6xl font-bold leading-snug mt-8 md:mt-0">
         Hi, I'm
         <br />
         <div className="bg-white px-1 italic rounded">Fatma Erciyas</div>
