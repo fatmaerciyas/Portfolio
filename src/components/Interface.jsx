@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useAtom } from "jotai";
 import { currentProjectAtom, projects } from "./Projects";
+import { useForm, ValidationError } from "@formspree/react";
 
 const Section = (props) => {
   const { children, mobileTop } = props;
@@ -269,57 +270,69 @@ const ProjectsSection = () => {
 };
 
 const ContactSection = () => {
+  const [state, handleSubmit] = useForm("xldrkrrv");
+
   return (
     <Section>
       <h2 className="text-3xl md:text-5xl font-bold">Contact me</h2>
       <div className="mt-8 p-8 rounded-md bg-white bg-opacity-50 w-96 max-w-full">
-        <form
-          id="contact-form"
-          action="https://formsubmit.co/fatmaerciyas22@gmail.com"
-          method="POST"
-        >
-          <label for="name" className="font-medium text-gray-900 block mb-1">
-            Name
-          </label>
-          <input
-            type="text"
-            name="user_name"
-            id="name"
-            className="block w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 p-3"
-            required
-          />
-          <label
-            for="email"
-            className="font-medium text-gray-900 block mb-1 mt-8"
-          >
-            Email
-          </label>
-          <input
-            type="email"
-            name="user_email"
-            id="email"
-            className="block w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 p-3"
-            required
-          />
-          <label
-            for="message"
-            className="font-medium text-gray-900 block mb-1 mt-8"
-          >
-            Message
-          </label>
-          <textarea
-            name="user_message"
-            id="message"
-            className="h-32 block w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 p-3"
-            required
-          ></textarea>
-          <button
-            type="submit"
-            className="bg-indigo-600 text-white py-4 px-8 rounded-lg font-bold text-lg mt-16"
-          >
-            Submit
-          </button>
-        </form>
+        {state.succeeded ? (
+          <p className="text-gray-900 text-center">Thanks for your message !</p>
+        ) : (
+          <form onSubmit={handleSubmit} method="POST">
+            <label for="name" className="font-medium text-gray-900 block mb-1">
+              Name
+            </label>
+            <input
+              type="text"
+              name="user_name"
+              id="name"
+              className="block w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 p-3"
+              required
+            />
+            <label
+              for="email"
+              className="font-medium text-gray-900 block mb-1 mt-8"
+            >
+              Email
+            </label>
+            <input
+              type="email"
+              name="user_email"
+              id="email"
+              className="block w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 p-3"
+              required
+            />
+            <ValidationError
+              className="mt-1 text-red-500"
+              errors={state.errors}
+            />
+            <label
+              for="message"
+              className="font-medium text-gray-900 block mb-1 mt-8"
+            >
+              Message
+            </label>
+            <textarea
+              name="user_message"
+              id="message"
+              className="h-32 block w-full rounded-md border-0 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 p-3"
+              required
+            ></textarea>
+            <ValidationError
+              className="mt-1 text-red-500"
+              errors={state.errors}
+            />
+
+            <button
+              disabled={state.submitting}
+              type="submit"
+              className="bg-indigo-600 text-white py-4 px-8 rounded-lg font-bold text-lg mt-16"
+            >
+              Submit
+            </button>
+          </form>
+        )}
       </div>
     </Section>
   );
