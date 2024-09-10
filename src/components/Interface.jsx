@@ -45,7 +45,10 @@ export const Interface = (props) => {
 
 const AboutSection = (props) => {
   const handleDownload = () => {
-    window.open("/Portfolio/public/cv/Fatma_ErciyasCv.pdf", "_blank");
+    window.open(
+      "https://fatmaerciyas.github.io/Portfolio/public/cv/Fatma_ErciyasCv.pdf",
+      "_blank"
+    );
   };
 
   const { setSection } = props;
