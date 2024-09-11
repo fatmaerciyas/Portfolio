@@ -45,12 +45,7 @@ export const Interface = (props) => {
 
 const AboutSection = (props) => {
   const handleDownload = () => {
-    const link = document.createElement("a");
-    link.href = "/Portfolio/public/cv/Fatma_ErciyasCv.pdf";
-    link.download = "Fatma_ErciyasCv.pdf"; // Specify the default file name
-    document.body.appendChild(link); // Append the link to the DOM
-    link.click(); // Simulate a click on the link
-    document.body.removeChild(link); // Remove the link from the DOM
+    window.open("/Portfolio/public/cv/Fatma_ErciyasCv.pdf", "_blank");
   };
 
   const { setSection } = props;
