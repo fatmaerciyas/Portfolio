@@ -5,6 +5,6 @@ export default defineConfig({
   plugins: [react()],
   base: "/Portfolio/", // This should match your GitHub Pages repository path
   build: {
-    outDir: "build", // Ensure this matches your deploy script
+    outDir: "dist", // build
   },
 });

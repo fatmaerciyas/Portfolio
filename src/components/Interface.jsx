@@ -45,8 +45,9 @@ export const Interface = (props) => {
 
 const AboutSection = (props) => {
   const handleDownload = () => {
-    // Use an absolute path based on the current origin
-    const url = `${window.location.origin}/Portfolio/public/cv/Fatma_ErciyasCv.pdf`;
+    // Path to the PDF file
+    const url = "/Portfolio/static/cv/Fatma_ErciyasCv.pdf";
+    // Open the PDF in a new tab
     window.open(url, "_blank");
   };
 
