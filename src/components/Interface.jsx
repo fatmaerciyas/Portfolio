@@ -45,7 +45,13 @@ export const Interface = (props) => {
 
 const AboutSection = (props) => {
   const handleDownload = async () => {
+<<<<<<< HEAD
     window.open("/Portfolio/static/cv/Fatma_ErciyasCv.pdf", "_blank");
+=======
+    const response = await fetch("Portfolio/static/cv/Fatma_ErciyasCv.pdf");
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+>>>>>>> origin/main
 
     // const response = await fetch(
     //   "../../Portfolio/static/cv/Fatma_ErciyasCv.pdf"
