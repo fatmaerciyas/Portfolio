@@ -45,28 +45,7 @@ export const Interface = (props) => {
 
 const AboutSection = (props) => {
   const handleDownload = async () => {
-<<<<<<< HEAD
-    window.open("/Portfolio/static/cv/Fatma_ErciyasCv.pdf", "_blank");
-=======
-    const response = await fetch("Portfolio/static/cv/Fatma_ErciyasCv.pdf");
-    const blob = await response.blob();
-    const url = window.URL.createObjectURL(blob);
->>>>>>> origin/main
-
-    // const response = await fetch(
-    //   "../../Portfolio/static/cv/Fatma_ErciyasCv.pdf"
-    // );
-    // const blob = await response.blob();
-    // const url = window.URL.createObjectURL(blob);
-
-    // // Create an anchor element
-    // const link = document.createElement("a");
-    // link.href = url;
-    // link.download = "Fatma_ErciyasCv.pdf"; // Specify the file name
-    // document.body.appendChild(link); // Append to the body
-    // link.click(); // Trigger the download
-    // document.body.removeChild(link); // Clean up
-    // window.URL.revokeObjectURL(url); // Release memory
+    window.open("/Portfolio/static/cv/FatmaErciyas_CV.pdf", "_blank");
   };
 
   const { setSection } = props;
