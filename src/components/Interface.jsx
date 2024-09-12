@@ -58,42 +58,22 @@ const AboutSection = (props) => {
       </h1>
       <motion.p
         className="text-lg text-gray-600 mt-4"
-        initial={{
-          opacity: 0,
-          y: 25,
-        }}
-        whileInView={{
-          opacity: 1,
-          y: 0,
-        }}
-        transition={{
-          duration: 1,
-          delay: 1.5,
-        }}
+        initial={{ opacity: 0, y: 25 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 1.5 }}
       >
         As a recent graduate in computer engineering,
         <br />I am developing websites using
         <br /> <b>.NET</b> and <b>React.js</b> technologies
       </motion.p>
-      <motion.button
-        onClick={handleDownload}
-        className={`bg-indigo-600 text-white py-4 px-8 
-      rounded-lg font-bold text-lg mt-4 md:mt-16`}
-        initial={{
-          opacity: 0,
-          y: 25,
-        }}
-        whileInView={{
-          opacity: 1,
-          y: 0,
-        }}
-        transition={{
-          duration: 1,
-          delay: 2,
-        }}
+      <a
+        href="/static/cv/Fatma_ErciyasCv.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="bg-indigo-600 text-white py-4 px-8 rounded-lg font-bold text-lg mt-4 md:mt-16 inline-block text-center"
       >
-        Download Cv
-      </motion.button>
+        Download CV
+      </a>
     </Section>
   );
 };
