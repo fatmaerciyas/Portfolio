@@ -44,9 +44,9 @@ export const Interface = (props) => {
 };
 
 const AboutSection = (props) => {
-  const handleDownload = async () => {
-    window.open("/Portfolio/static/cv/FatmaErciyas_CV.pdf", "_blank");
-  };
+  // const handleDownload = async () => {
+  //   window.open("/Portfolio/static/cv/FatmaErciyas_CV.pdf", "_blank");
+  // };
 
   const { setSection } = props;
   return (
@@ -67,9 +67,10 @@ const AboutSection = (props) => {
         <br /> <b>.NET</b> and <b>React.js</b> technologies
       </motion.p>
       <a
-        href="/static/cv/Fatma_ErciyasCv.pdf"
-        target="_blank"
-        rel="noopener noreferrer"
+        href="/Portfolio/static/cv/Fatma_ErciyasCv.pdf
+.pdf"
+        download=""
+        rel="cv"
         className="bg-indigo-600 text-white py-4 px-8 rounded-lg font-bold text-lg mt-4 md:mt-16 inline-block text-center"
       >
         Download CV
