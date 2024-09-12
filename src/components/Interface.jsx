@@ -67,10 +67,9 @@ const AboutSection = (props) => {
         <br /> <b>.NET</b> and <b>React.js</b> technologies
       </motion.p>
       <a
-        href="/Portfolio/static/cv/Fatma_ErciyasCv.pdf
-.pdf"
-        download=""
-        rel="cv"
+        href="/Portfolio/static/cv/Fatma_ErciyasCv.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
         className="bg-indigo-600 text-white py-4 px-8 rounded-lg font-bold text-lg mt-4 md:mt-16 inline-block text-center"
       >
         Download CV
