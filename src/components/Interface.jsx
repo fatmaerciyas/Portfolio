@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useAtom } from "jotai";
 import { currentProjectAtom, projects } from "./Projects";
 import { useForm, ValidationError } from "@formspree/react";
+import { useState } from "react";
 
 const Section = (props) => {
   const { children, mobileTop } = props;
@@ -44,11 +45,11 @@ export const Interface = (props) => {
 };
 
 const AboutSection = (props) => {
-  const handleDownload = () => {
-    // Path to the PDF file
-    const url = "/Portfolio/static/cv/Fatma_ErciyasCv.pdf";
-    // Open the PDF in a new tab
-    window.open(url, "_blank");
+  const [isPdfVisible, setIsPdfVisible] = useState(false);
+  const pdfUrl = "/Portfolio/static/cv/Fatma_ErciyasCv.pdf";
+
+  const handleTogglePdf = () => {
+    setIsPdfVisible((prevState) => !prevState);
   };
 
   const { setSection } = props;
@@ -61,42 +62,44 @@ const AboutSection = (props) => {
       </h1>
       <motion.p
         className="text-lg text-gray-600 mt-4"
-        initial={{
-          opacity: 0,
-          y: 25,
-        }}
-        whileInView={{
-          opacity: 1,
-          y: 0,
-        }}
-        transition={{
-          duration: 1,
-          delay: 1.5,
-        }}
+        initial={{ opacity: 0, y: 25 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 1.5 }}
       >
         As a recent graduate in computer engineering,
         <br />I am developing websites using
         <br /> <b>.NET</b> and <b>React.js</b> technologies
       </motion.p>
       <motion.button
-        onClick={handleDownload}
-        className={`bg-indigo-600 text-white py-4 px-8 
-      rounded-lg font-bold text-lg mt-4 md:mt-16`}
-        initial={{
-          opacity: 0,
-          y: 25,
-        }}
-        whileInView={{
-          opacity: 1,
-          y: 0,
-        }}
-        transition={{
-          duration: 1,
-          delay: 2,
-        }}
+        onClick={handleTogglePdf}
+        className={`bg-indigo-600 text-white py-4 px-8 rounded-lg font-bold text-lg mt-4 md:mt-16 transition-transform duration-500 ${
+          isPdfVisible ? "transform scale-105" : "transform scale-100"
+        }`}
+        initial={{ opacity: 0, y: 25 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 2 }}
       >
-        Download Cv
+        {isPdfVisible ? "Hide CV" : "View CV"}
       </motion.button>
+
+      <div
+        className={`transition-opacity duration-500 ease-in-out ${
+          isPdfVisible ? "opacity-100" : "opacity-0"
+        }`}
+        style={{ maxHeight: isPdfVisible ? "800px" : "0", overflow: "hidden" }}
+      >
+        {/* Display PDF using iframe */}
+        <iframe
+          src={pdfUrl}
+          width="100%"
+          height="800px"
+          style={{ border: "none" }}
+          title="PDF Viewer"
+        >
+          This browser does not support PDFs. Please download the PDF to view
+          it: <a href={pdfUrl}>Download PDF</a>.
+        </iframe>
+      </div>
     </Section>
   );
 };
